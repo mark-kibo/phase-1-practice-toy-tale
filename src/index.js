@@ -77,55 +77,6 @@ const getData = async () => {
   }
 }
 
-
-
-
-// add data to server
-const postData = async(body) => {
-  let data ={...body, likes:0}
-  console.log(data)
-  let passedData = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify(data)
-  }
-  console.log(passedData)
-  try {
-    const response = await fetch('http://localhost:3000/toys', passedData);
-    if (response.status != 200) {
-      throw new Error("invalid data");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-
-}
-
-// update data to server
-const putData = async (body) => {
-  let passedData = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify(body)
-  }
-  try {
-    const response = await fetch('', passedData);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-
-}
-
 // patch data to server(partially update)
 const patchData = async (body, id) => {
   let passedData = {
@@ -144,25 +95,6 @@ const patchData = async (body, id) => {
     console.error(error);
   }
 
-}
-
-// delete data on server
-const DeleteData = async (id) => {
-  let passedData = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: {}
-  }
-  try {
-    const response = await fetch(`http://localhost:3000/toys/${id}`, { passedData });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
 }
 
 
